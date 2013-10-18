@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<install version="1.5" type="plugin" group="vmpayment" >
+
+    <name>PayU Business (Redirect Payment Page)</name>
+    <author>PayU Payment Solutions (Pty) Ltd.</author>
+    <authorUrl>http://www.payu.co.za</authorUrl>
+    <copyright>Copyright (C) 2012 PayU All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <version>1.0</version>
+    <description><![CDATA[<a href="http://payu.com" target="_blank">PayU</a> ]]></description>
+    
+    <files>
+        <filename plugin="payuRedirectPaymentPage">payuRedirectPaymentPage.php</filename>
+        <filename>index.html</filename>
+    </files>
+    
+    <languages>
+        <language tag="en-GB">administrator\language\en-GB\en-GB.plg_vmpayment_payuRedirectPaymentPage.ini</language>
+    </languages>
+    
+    <params addpath="/administrator/components/com_virtuemart/elements">    
+        <param type="vmjpluginwarning" />
+        <param   type="spacer" default="PayU Parameters" level="level1" />
+        <param name="payuRedirectPaymentPage_systemToCall_production" type="radio" default="1" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_WHICHSYSTEM" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_WHICHSYSTEM_DESC" >
+            <option value="0">Staging</option>
+            <option value="1">Production</option>
+        </param>
+        
+        <param type="text" name="payuRedirectPaymentPage_safekey"  size="50" label="SafeKey" default="" />
+        <param type="text" name="payuRedirectPaymentPage_username"  size="50" label="SOAP Username"  default="" />
+        <param type="text" name="payuRedirectPaymentPage_password"  size="50" label="SOAP Password" default="" />
+        
+        <param type="text" name="payuRedirectPaymentPage_defaultOrderNumberPrepend"  size="50" label="PayU Payment Page Description Prepend" default="ZA" />
+        
+        <param type="spacer" default="Virtuemart Transaction Parameters" level="level1" />
+        <param type="vmorderstate" name="status_pending" scope="com_virtuemart" default="P" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING_EXPLAIN" />
+        <param type="vmorderstate" name="status_success" scope="com_virtuemart" default="C" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS_EXPLAIN" />
+        <param type="vmorderstate" name="status_canceled" scope="com_virtuemart" default="X" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED_EXPLAIN" />    
+    </params>    
+    
+    
+        <!--        
+        <param type="spacer" default="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_SANDBOX_PARAMS" level="level1" />
+
+        <param   type="spacer" default="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_VIRTUEMART_PARAMS" level="level1" />
+        <param	name="payment_logos" type="vmfiles" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS"
+                    description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS_DESC"
+                    directory="/images/stories/virtuemart/payment"
+                    default="default" hide_default="1" hide_none="1"
+                    stripext="0"  exclude="^_" />
+
+        <param name="status_pending" type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING_EXPLAIN" />
+        <param name="status_success" type="vmorderstate" scope="com_virtuemart" default="C" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS_EXPLAIN" />
+        <param name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED_EXPLAIN" />
+        <param name="countries" type="vmcountries"  scope="com_virtuemart" default="" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_COUNTRIES" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_COUNTRIES_DESC"/>
+        <param name="min_amount" type="text"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MIN_AMOUNT" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MIN_AMOUNT_EXPLAIN" />
+        <param name="max_amount" type="text"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MAX_AMOUNT" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MAX_AMOUNT_EXPLAIN" />
+        <param name="tax_id" type="vmtaxes" scope="com_virtuemart"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_TAX" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_TAX_EXPLAIN" />
+        -->
+    
+    <!--
+    <fieldset addpath="/administrator/components/com_virtuemart/elements">
+        <field type="vmjpluginwarning" />
+        <field type="spacer" default="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_FIELDS" level="level1" />
+        
+        <field type="text" name="payfast_merchant_id"  size="50" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_WHICHSYSTEM_DESC"
+            default="" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MERCHANT_ID_DESC" />
+        
+        <field type="text" name="payfast_merchant_id"  size="50" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MERCHANT_ID"
+             default="" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MERCHANT_ID_DESC" />
+        <field type="text" name="payfast_merchant_key"  size="50" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MERCHANT_KEY"
+             default="" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MERCHANT_KEY_DESC" />
+
+        <field	name="payment_logos" type="vmfiles" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS"
+             	description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS_DESC"
+             	directory="/images/stories/virtuemart/payment"
+             	default="default" hide_default="1" hide_none="1"
+             	stripext="0"  exclude="^_" />
+
+        <field   type="spacer" default="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_SANDBOX_FIELDS" level="level1" />
+
+        <field name="sandbox" type="radio" default="1" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_SANDBOX" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_SANDBOX_DESC" >
+            <option value="staging">Staging</option>
+            <option value="production">Prodution</option>
+        </field>
+
+        <field   type="spacer" default="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_VIRTUEMART_FIELDS" level="level1" />
+
+        <field	name="payment_logos" type="vmfiles" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS"
+             	description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_LOGOS_DESC"
+             	directory="/images/stories/virtuemart/payment"
+             	default="default" hide_default="1" hide_none="1"
+             	stripext="0"  exclude="^_" />
+
+        <field name="status_pending" type="vmorderstate" scope="com_virtuemart" default="P" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_PENDING_EXPLAIN" />
+        <field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_SUCCESS_EXPLAIN" />
+        <field name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="X" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_STATUS_FAILED_EXPLAIN" />
+        <field name="countries" type="vmcountries"  scope="com_virtuemart" default="" label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_COUNTRIES" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_COUNTRIES_DESC"/>
+
+        <field name="min_amount" type="text"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MIN_AMOUNT" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MIN_AMOUNT_EXPLAIN" />
+        <field name="max_amount" type="text"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MAX_AMOUNT" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_MAX_AMOUNT_EXPLAIN" />
+        <field name="payment_tax_id" type="vmtaxes" scope="com_virtuemart"  label="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_TAX" description="VMPAYMENT_PAYUREDIRECTPAYMENTPAGE_TAX_EXPLAIN" />
+    </fieldset>
+    -->
+</install>
